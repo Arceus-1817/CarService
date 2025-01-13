@@ -1,8 +1,8 @@
 package com.casestudy;
 
-import java.io.Serializable;
 
-public class Customer implements Serializable {
+public class Customer
+{
 	protected String name;
 	protected double ph_no;
 	protected String C_address;
