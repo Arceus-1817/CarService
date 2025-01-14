@@ -1,11 +1,14 @@
 package com.casestudy;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Customer
+public class Customer implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	protected String name;
-	protected static String ph_no;
+	protected String ph_no;
 	protected String C_address;
 	
 	public Customer(String name, String ph_no, String c_address) {
@@ -21,7 +24,7 @@ public class Customer
 	public void setName(String name) {
 		this.name = name;
 	}
-	public static String getPh_no() {
+	public String getPh_no() {
 		return ph_no;
 	}
 	public void setPh_no(String ph_no) {

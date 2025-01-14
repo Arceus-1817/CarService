@@ -1,5 +1,6 @@
 package com.casestudy;
 
+import java.util.Objects;
 
 public class Vehicle {
 	protected String Reg_no;
@@ -26,6 +27,26 @@ public class Vehicle {
 	@Override
 	public String toString() {
 		return "Vehicle [Reg_no=" + Reg_no + ", Company=" + Company + ", model=" + model + "]";
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(Reg_no);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Vehicle other = (Vehicle) obj;
+		return Objects.equals(Reg_no, other.Reg_no);
+	}
+	public Vehicle(String reg_no, String company, String model) {
+		Reg_no = reg_no;
+		Company = company;
+		this.model = model;
 	}
 	
 	

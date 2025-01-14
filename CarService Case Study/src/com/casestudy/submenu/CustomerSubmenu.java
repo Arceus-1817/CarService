@@ -1,9 +1,12 @@
 package com.casestudy.submenu;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Scanner;
 
 import com.casestudy.Customer;
+import com.casestudy.dao.CustomerDao;
 
 public class CustomerSubmenu {
 	
@@ -29,7 +32,7 @@ public class CustomerSubmenu {
 	
 	static HashSet<Customer> CustomerSet =new HashSet<>();
 	
-	public static void  CSmenu(Scanner sc) {
+	public static void  CSmenu(Scanner sc) throws FileNotFoundException, ClassNotFoundException, IOException {
 
 		int CSchoice;
 
@@ -38,17 +41,17 @@ public class CustomerSubmenu {
 			
 			case 1: 
 			System.out.println("Enter the name,phone number,address of the customer :");
-			String Cname=sc.next();
-			String Cphone=sc.next();
-			String Caddress=sc.next();
-			CustomerSet.add(new Customer(Cname,Cphone,Caddress));
+			CustomerSet.add(new Customer(sc.next(),sc.next(),sc.next()));
+			CustomerDao.writeCustomer(CustomerSet);
 					
 				break;
 				
-			case 2:if (CustomerSet.isEmpty()) {
+			case 2:
+				CustomerSet=CustomerDao.readCustomer();
+				if (CustomerSet.isEmpty()) {
                 System.out.println("No customers found.");
             } else {
-                for (Customer customer : CustomerSet) {
+            	for (Customer customer : CustomerSet) {
                     System.out.println(customer);
 			}
             }
@@ -64,7 +67,7 @@ public class CustomerSubmenu {
 				System.out.println("select what you want to change :");
 				
 				for (Customer customer : CustomerSet) {
-					if(phone.equals(Customer.getPh_no())) {
+					if(phone.equals(customer.getPh_no())) {
 						int Editchoice;
 						while((Editchoice=EditCustomer(sc))!=0) {
 							switch(Editchoice) {
@@ -72,20 +75,37 @@ public class CustomerSubmenu {
 								System.out.println("Enter the new name :");
 								String name=sc.next();
 								customer.setName(name);
-								
+								break;
 							case 2:
 								System.out.println("Enter the new address :");
 								String address=sc.next();
 								customer.setC_address(address);
+								break;
 							}
 						}
 					}else {
 						System.out.println("NO SUCH ENTRY IS PRESENT...");
 					}
 				}
+				CustomerDao.writeCustomer(CustomerSet);
+				break;
+				
+				
+			case 4:
+				System.out.println("Enter the registered phone number of the customer you want to delete :");
+				String Cdelete =sc.next();
+				for (Customer customer : CustomerSet) {
+					if(Cdelete.equals(customer.getPh_no())) {
+						CustomerSet.remove(customer);
+						System.out.println("The record is deleted.....");
+						CustomerDao.writeCustomer(CustomerSet);
+					}
+					
+					
 			
 			}
 		}
+	}
 	}
 	
 	

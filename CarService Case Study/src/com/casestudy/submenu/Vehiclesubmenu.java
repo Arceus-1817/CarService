@@ -1,6 +1,9 @@
 package com.casestudy.submenu;
 
+import java.util.HashMap;
 import java.util.Scanner;
+
+import com.casestudy.Customer;
 
 public class Vehiclesubmenu {
 	
@@ -17,6 +20,7 @@ public class Vehiclesubmenu {
 		return sc.nextInt();
 	}
 	
+	static HashMap<String, String> hashMap = new HashMap<>();
 	
 	public static void  VSmenu(Scanner sc) {
 
@@ -26,6 +30,11 @@ public class Vehiclesubmenu {
 			switch(VSchoice) {
 			
 			case 1: 
+				System.out.println("Enter the Reg_no,Company,model of the vehicle :");
+				String Reg_no=sc.next();
+				String Company=sc.next();
+				String model=sc.next();
+				hashMap.add(new Customer(Reg_no,Company,model));
 					
 				break;
 				

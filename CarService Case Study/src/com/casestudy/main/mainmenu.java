@@ -1,5 +1,6 @@
 package com.casestudy.main;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Scanner;
@@ -24,8 +25,9 @@ public class mainmenu {
 
 
 	
-	public static void main (String []args) {
+	public static void main (String []args) throws FileNotFoundException, ClassNotFoundException, IOException {
 		Scanner sc=new Scanner(System.in);
+		
 		System.out.println("Welcome to Our Shop......   :)");
 		System.out.println("Select what you want to do :");
 		int ch;
