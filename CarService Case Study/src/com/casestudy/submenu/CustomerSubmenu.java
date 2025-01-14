@@ -72,11 +72,12 @@ public class CustomerSubmenu {
 								System.out.println("Enter the new name :");
 								String name=sc.next();
 								customer.setName(name);
-								
+								break;
 							case 2:
 								System.out.println("Enter the new address :");
 								String address=sc.next();
 								customer.setC_address(address);
+								break;
 							}
 						}
 					}else {
