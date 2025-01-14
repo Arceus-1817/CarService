@@ -1,6 +1,8 @@
 package com.casestudy.submenu;
 
+import java.util.LinkedList;
 import java.util.Scanner;
+import com.casestudy.Parts;
 
 public class PartsSubmenu {
 	public static int menu(Scanner sc) {
@@ -14,6 +16,8 @@ public class PartsSubmenu {
 		return sc.nextInt();
 	}
 	
+	static LinkedList<Parts> PartsList=new LinkedList<>();
+	
 	
 	public static void  PSmenu(Scanner sc) {
 
@@ -23,13 +27,48 @@ public class PartsSubmenu {
 			switch(PSchoice) {
 			
 			case 1: 
-					
-				break;
+				System.out.println("ENTER THE PARTS DETAILS(Id,NAME,PRIZE)");
+				String Id=sc.next();
+				String Name=sc.next();
+				double Prize=sc.nextDouble();
 				
-			case 2:
+				PartsList.add(new Parts(Id,Name,Prize));
 				break;
 			
-			}
+			case 2:
+				if(PartsList.isEmpty()) {
+				System.out.println("No Parts Present in Garage");
+				}
+				else
+				{
+					for(Parts parts:PartsList) {
+						System.out.println(parts);
+		
+					}
+				}
+				break;
+			
+			case 3:
+				System.out.println("Enter the partId of part");
+				String PartId =sc.next();
+				
+				for (Parts parts : PartsList) {
+					if(PartId.equals(parts.getPartId())) {
+						
+						System.out.println("Enter the prize of part");
+					   double prize=sc.nextDouble();
+						parts.setPrize(prize);
+						System.out.println("Parts price changed....");
+						System.out.println("updated" + prize);
+						}
+				
+				}	
+				break;
+			
+			
 		}
+	
+		}
+	
 	}
 }
