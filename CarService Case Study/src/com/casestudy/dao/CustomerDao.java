@@ -46,8 +46,6 @@ public class CustomerDao implements Serializable{
 		
 	}
 	
-	public void displayCustomer() {
 		
 	}
 	
-}
