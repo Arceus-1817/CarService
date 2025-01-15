@@ -1,9 +1,14 @@
 package com.casestudy.submenu;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Scanner;
 
 import com.casestudy.Customer;
+import com.casestudy.Vehicle;
+import com.casestudy.dao.CustomerDao;
 
 public class Vehiclesubmenu {
 	
@@ -20,29 +25,65 @@ public class Vehiclesubmenu {
 		return sc.nextInt();
 	}
 	
-	static HashMap<String, String> hashMap = new HashMap<>();
+static HashSet<Vehicle> VehicleSet =new HashSet<>();
 	
-	public static void  VSmenu(Scanner sc) {
+	public static void  CSmenu(Scanner sc) throws FileNotFoundException, ClassNotFoundException, IOException {
 
-		int VSchoice;
+		int CSchoice;
 
-		while((VSchoice=menu(sc))!=0) {
-			switch(VSchoice) {
+		while((CSchoice=menu(sc))!=0) {
+			switch(CSchoice) {
 			
 			case 1: 
-				System.out.println("Enter the Reg_no,Company,model of the vehicle :");
-				String Reg_no=sc.next();
-				String Company=sc.next();
-				String model=sc.next();
-				hashMap.add(new Customer(Reg_no,Company,model));
+			System.out.println("Enter the name,phone number,address of the customer :");
+			VehicleSet.add(new Vehicle(sc.next(),sc.next(),sc.next()));
+			VehicleDao.writeVehicle(VehicleSet);
 					
 				break;
 				
 			case 2:
-				break;
-			
+				VehicleSet=VehicleDao.readvehicle();
+				if (VehicleSet.isEmpty()) {
+                System.out.println("No vehicle found.");
+            } else {
+            	for (Vehicle vehicle : VehicleSet) {
+                    System.out.println(vehicle);
 			}
-		}
-	}
+            }
+				break;
+				
+				
+				
+				
+				
+			case 3:
+				System.out.println("Enter the registered phone number of the customer :");
+				String phone =sc.next();
+				System.out.println("select what you want to change :");
+				
+				for (Vehicle vehicle : VehicleSet) {
+					if(phone.equals(customer.getPh_no())) {
+						int Editchoice;
+						while((Editchoice=EditCustomer(sc))!=0) {
+							switch(Editchoice) {
+							case 1:
+								System.out.println("Enter the new name :");
+								String name=sc.next();
+								customer.setName(name);
+								break;
+							case 2:
+								System.out.println("Enter the new address :");
+								String address=sc.next();
+								customer.setC_address(address);
+								break;
+							}
+						}
+					}else {
+						System.out.println("NO SUCH ENTRY IS PRESENT...");
+					}
+				}
+				CustomerDao.writeCustomer(VehicleSet);
+				break;
+
 	
 }

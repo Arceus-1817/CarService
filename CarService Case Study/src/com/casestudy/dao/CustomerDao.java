@@ -44,8 +44,12 @@ public class CustomerDao implements Serializable{
 			
 		}
 		
+<<<<<<< HEAD
 	}
 
 	private static final long serialVersionUID = 1L;
 	
 }
+=======
+	}
+>>>>>>> 75231dc15b1d2f685e2f59c666b041b7541d796a
