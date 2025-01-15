@@ -1,8 +1,14 @@
 package com.casestudy.submenu;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Scanner;
+
+import com.casestudy.Customer;
 import com.casestudy.Parts;
+import com.casestudy.dao.CustomerDao;
+import com.casestudy.dao.PartsDao;
 
 public class PartsSubmenu {
 	public static int menu(Scanner sc) {
@@ -19,7 +25,7 @@ public class PartsSubmenu {
 	static LinkedList<Parts> PartsList=new LinkedList<>();
 	
 	
-	public static void  PSmenu(Scanner sc) {
+	public static void  PSmenu(Scanner sc) throws FileNotFoundException, ClassNotFoundException, IOException {
 
 		int PSchoice;
 
@@ -28,14 +34,13 @@ public class PartsSubmenu {
 			
 			case 1: 
 				System.out.println("ENTER THE PARTS DETAILS(Id,NAME,PRIZE)");
-				String Id=sc.next();
-				String Name=sc.next();
-				double Prize=sc.nextDouble();
 				
-				PartsList.add(new Parts(Id,Name,Prize));
+				PartsList.add(new Parts(sc.next(),sc.next(),sc.nextDouble()));
+				PartsDao.writeCustomer(PartsList);
 				break;
 			
 			case 2:
+				PartsList=PartsDao.readParts();
 				if(PartsList.isEmpty()) {
 				System.out.println("No Parts Present in Garage");
 				}
@@ -62,8 +67,23 @@ public class PartsSubmenu {
 						System.out.println("updated" + prize);
 						}
 				
-				}	
+				}
+				PartsDao.writeCustomer(PartsList);
 				break;
+				
+			case 4:
+				System.out.println("Enter the parts id you want to delete :");
+				String Cdelete =sc.next();
+				for (Parts parts : PartsList) {
+					if(Cdelete.equals(parts.getPartId())) {
+						PartsList.remove(parts);
+						System.out.println("The record is deleted.....");
+						PartsDao.writeCustomer(PartsList);
+					}
+					
+					
+			
+			}
 			
 			
 		}
