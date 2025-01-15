@@ -45,10 +45,3 @@ public class CustomerDao implements Serializable{
 		}
 		
 	}
-	
-<<<<<<< HEAD
-		
-	}
-	
-=======
->>>>>>> cf75822c1c1416b2ec3de801e233102969b60b50
