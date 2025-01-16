@@ -1,6 +1,5 @@
 package com.casestudy.dao;
 
-public class VehicleDao {
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -46,4 +45,6 @@ public class VehicleDao implements Serializable{
 		}
 		
 	}
+	
+	
 }

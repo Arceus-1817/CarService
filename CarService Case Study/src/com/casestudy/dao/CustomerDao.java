@@ -15,7 +15,7 @@ import com.casestudy.Customer;
 
 public class CustomerDao implements Serializable{
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID1 = 1L;
 
 	public static void writeCustomer(HashSet<Customer> customer) {
 			
@@ -44,12 +44,28 @@ public class CustomerDao implements Serializable{
 			
 		}
 		
-<<<<<<< HEAD
+	}
+	
+	
+public static Customer readspecific(String number) throws FileNotFoundException, IOException, ClassNotFoundException {
+		
+		
+		
+		try(FileInputStream fis = new FileInputStream(new File("Customer.txt"))){
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			
+			HashSet<Customer> customer = (HashSet<Customer>) ois.readObject();
+			for(Customer ele : customer) {
+			if(ele.getPh_no().equals(number)) {
+			return ele;
+			}
+
+			}
+		}
+		return null;
+		
 	}
 
 	private static final long serialVersionUID = 1L;
 	
 }
-=======
-	}
->>>>>>> 75231dc15b1d2f685e2f59c666b041b7541d796a
