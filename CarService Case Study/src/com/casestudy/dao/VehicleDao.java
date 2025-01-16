@@ -48,7 +48,6 @@ public class VehicleDao implements Serializable{
 	}
 	
 	
-<<<<<<< HEAD
 	
 	
 	
@@ -81,6 +80,5 @@ public class VehicleDao implements Serializable{
 		
 	}
 
-=======
->>>>>>> main
+
 }
