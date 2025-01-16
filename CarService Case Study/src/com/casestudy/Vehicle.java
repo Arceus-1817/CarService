@@ -1,10 +1,7 @@
 package com.casestudy;
 
-<<<<<<< HEAD
 import java.io.Serializable;
-=======
 import java.util.HashMap;
->>>>>>> main
 import java.util.Objects;
 
 public class Vehicle implements Serializable{

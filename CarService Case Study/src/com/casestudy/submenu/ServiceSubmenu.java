@@ -28,7 +28,7 @@ public class ServiceSubmenu {
 				break;
 				
 			case 2:
-				break;
+				break; 
 			
 			}
 		}
