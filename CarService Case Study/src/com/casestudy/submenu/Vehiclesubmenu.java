@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+//delete
+=======
 //05  03  file
+>>>>>>> main
 
 
 
@@ -47,12 +51,31 @@ public class Vehiclesubmenu {
 			String regnum =sc.next();
 			String company =sc.next();
 			String model =sc.next();
+<<<<<<< HEAD
+			Vehicle NewVehicle=new Vehicle(regnum, company, model);
+			VehicleSet.add(NewVehicle);
+=======
 			VehicleSet.add(new Vehicle(regnum,company,model));
 			Vehicle NewVehicle=new Vehicle(regnum, company, model);
+>>>>>>> main
 			
 			
 			 System.out.println("Enter the customer phone number");
 			 String phone =sc.next();
+<<<<<<< HEAD
+			 
+			 Customer NewCustomer = CustomerDao.readspecific(phone);
+
+			 if (NewCustomer != null) {
+			        vehicleMap.put(NewCustomer, NewVehicle);
+			        System.out.println("Vehicle added for customer: " + NewCustomer.getPh_no());
+			    } else {
+			        System.out.println("Customer not found with phone number: " + phone);
+			    }
+			 
+			VehicleDao.write(vehicleMap);
+			VehicleDao.writeVehicle(VehicleSet);
+=======
 			 Customer NewCustomer = CustomerDao.readspecific(phone);
 
 			 for(Customer customer : CustomerSubmenu.CustomerSet) {
@@ -63,13 +86,18 @@ public class Vehiclesubmenu {
 			 }
 			 
 			//VehicleDao.writeVehicle(VehicleSet);
+>>>>>>> main
 					
 				break;
 				
 			case 2:
 				
 				
+<<<<<<< HEAD
+			VehicleSet=VehicleDao.readVehicle();
+=======
 				//VehicleSet=VehicleDao.readVehicle();
+>>>>>>> main
 				if (VehicleSet.isEmpty()) {
                 System.out.println("No vehicle found.");
             } else {
@@ -82,12 +110,24 @@ public class Vehiclesubmenu {
 				
 			case 3:
 				
+<<<<<<< HEAD
+				HashSet<Customer> customer = CustomerDao.readCustomer();
+				System.out.println("Enter the Customer phone number :");
+				String ph=sc.next();
+				 for(Customer ele : customer) {
+
+					 if(ele.getPh_no().equals(ph)) {
+				           Vehicle vehicle = Vehiclesubmenu.vehicleMap.get(ele);
+
+						 System.out.println(ph+ ":"+vehicle);
+=======
 				System.out.println("Enter the Customer phone number :");
 				String ph=sc.next();
 				 for(Customer customer : CustomerSubmenu.CustomerSet) {
 
 					 if(customer.getPh_no().equals(ph)) {
 						 System.out.println(ph+ ":"+Vehiclesubmenu.vehicleMap.get(VehicleSet));
+>>>>>>> main
 					 }
 				 }
 				 break;
@@ -109,11 +149,28 @@ public class Vehiclesubmenu {
 						System.out.println("NO SUCH ENTRY IS PRESENT...");
 					}
 				}
+<<<<<<< HEAD
+				VehicleDao.write(vehicleMap);
+				VehicleDao.writeVehicle(VehicleSet);
+=======
 				//VehicleDao.writeVehicle(VehicleSet);
+>>>>>>> main
 				break;
 				
 				
 			case 5:
+<<<<<<< HEAD
+				HashSet<Vehicle> vehicle = VehicleDao.readVehicle();
+
+				System.out.println("Enter the registered number of the car you want to delete :");
+				String Cdelete =sc.next();
+				for (Vehicle  ele: vehicle) {
+					if(Cdelete.equals(ele.getReg_no())) {
+						VehicleSet.remove(ele);
+						System.out.println("The record is deleted.....");
+					}
+					VehicleDao.writeVehicle(VehicleSet);
+=======
 				System.out.println("Enter the registered number of the car you want to delete :");
 				String Cdelete =sc.next();
 				for (Vehicle vehicle : VehicleSet) {
@@ -122,6 +179,7 @@ public class Vehiclesubmenu {
 						System.out.println("The record is deleted.....");
 						VehicleDao.writeVehicle(VehicleSet);
 					}
+>>>>>>> main
 					
 					
 			
