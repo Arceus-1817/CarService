@@ -1,5 +1,6 @@
 package com.casestudy.dao;
 
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -47,6 +48,7 @@ public class VehicleDao implements Serializable{
 	}
 	
 	
+<<<<<<< HEAD
 	
 	
 	
@@ -79,4 +81,6 @@ public class VehicleDao implements Serializable{
 		
 	}
 
+=======
+>>>>>>> main
 }
