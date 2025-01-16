@@ -45,5 +45,28 @@ public class CustomerDao implements Serializable{
 		}
 		
 	}
+	
+	
+	
+public static Customer readspecific(String num) throws FileNotFoundException, IOException, ClassNotFoundException {
+		
+		
+		
+		try(FileInputStream fis = new FileInputStream(new File("Customer.txt"))){
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			
+			HashSet<Customer> customer = (HashSet<Customer>) ois.readObject();
+			for(Customer ele : customer) {
+			if(ele.getPh_no
+					().equals(num)) {
+			return ele;
+			}
+
+			}
+			
+		}
+		return null;
+		
+	}
 }
 	
