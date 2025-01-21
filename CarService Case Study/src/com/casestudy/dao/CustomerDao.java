@@ -47,7 +47,8 @@ public class CustomerDao implements Serializable{
 	}
 	
 	
-public static Customer readspecific(String number) throws FileNotFoundException, IOException, ClassNotFoundException {
+	
+public static Customer readspecific(String num) throws FileNotFoundException, IOException, ClassNotFoundException {
 		
 		
 		
@@ -56,16 +57,16 @@ public static Customer readspecific(String number) throws FileNotFoundException,
 			
 			HashSet<Customer> customer = (HashSet<Customer>) ois.readObject();
 			for(Customer ele : customer) {
-			if(ele.getPh_no().equals(number)) {
+			if(ele.getPh_no
+					().equals(num)) {
 			return ele;
 			}
 
 			}
+			
 		}
 		return null;
 		
 	}
-
-	private static final long serialVersionUID = 1L;
-	
 }
+

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.HashSet;
 
 import com.casestudy.Customer;
@@ -47,4 +48,37 @@ public class VehicleDao implements Serializable{
 	}
 	
 	
+	
+	
+	
+	public static void write(HashMap<Customer, Vehicle> vehicleMap) {
+		
+		try(FileOutputStream fos = new FileOutputStream(new File("Vehicle.txt"))) {
+			
+			ObjectOutputStream os = new ObjectOutputStream(fos);
+			os.writeObject(vehicleMap);
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			
+		}
+		
+	}
+	
+	public static HashMap<Object, Object> read() throws FileNotFoundException, IOException, ClassNotFoundException {
+		
+		
+		
+		try(FileInputStream fis = new FileInputStream(new File("Vehicle.txt"))){
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			
+			HashMap<Object, Object> vehicle = (HashMap<Object,Object>) ois.readObject();
+			return vehicle;
+			
+		}
+		
+	}
+
+
 }

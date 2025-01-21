@@ -1,9 +1,10 @@
 package com.casestudy;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class Vehicle {
+public class Vehicle implements Serializable{
 	protected String Reg_no;
 	protected String Company;
 	protected String model;
