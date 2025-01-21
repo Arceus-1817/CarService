@@ -1,11 +1,24 @@
 package com.casestudy;
 
+import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Objects;
 
-public class Vehicle {
+public class Vehicle implements Serializable{
 	protected String Reg_no;
 	protected String Company;
 	protected String model;
+	
+//	
+//	public HashMap<String,Object> toMap(){
+//		 HashMap<String, Object> VehicleSet = new HashMap<>();
+//		 VehicleSet.put("regnumber", this.Reg_no);
+//		 VehicleSet.put("Company", this.Company);
+//		 VehicleSet.put("model", this.model);
+//		return VehicleSet;
+//	}
+	
+	
 	public String getReg_no() {
 		return Reg_no;
 	}

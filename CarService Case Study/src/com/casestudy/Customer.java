@@ -11,6 +11,11 @@ public class Customer implements Serializable
 	protected String ph_no;
 	protected String C_address;
 	
+	
+	
+	
+	
+	
 	public Customer(String name, String ph_no, String c_address) {
 		this.name = name;
 		this.ph_no = ph_no;

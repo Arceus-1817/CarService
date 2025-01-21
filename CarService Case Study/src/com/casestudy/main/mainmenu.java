@@ -8,7 +8,13 @@ import com.casestudy.submenu.*;
 
 public class mainmenu {	
 	
+	public static String gst;
+
+
+
+
 	public static int menu(Scanner sc) {
+		int choice;
 		System.out.println("********************************************");
 		System.out.println("0. Exit");
 		System.out.println("1. Customer");
@@ -18,7 +24,9 @@ public class mainmenu {
 		System.out.println("5. Total sales of today");
 		System.out.println("6. Sales of perticular day");
 		System.out.println("********************************************");
-		return sc.nextInt();
+		
+		choice = sc.nextInt();
+		return choice;
 		
 	}
 	
