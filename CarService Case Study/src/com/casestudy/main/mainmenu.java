@@ -8,6 +8,11 @@ import com.casestudy.submenu.*;
 
 public class mainmenu {	
 	
+	public static double gst;
+
+
+
+
 	public static int menu(Scanner sc) {
 		int choice;
 		System.out.println("********************************************");
@@ -50,7 +55,7 @@ public class mainmenu {
 			
 				
 			case 3:
-				ServiceSubmenu.SSmenu(sc);
+				ProcessSubMenu.processMenu(sc);
 				break;
 				
 				
