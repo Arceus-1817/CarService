@@ -1,54 +1,55 @@
 package com.casestudy;
 
-import java.util.List;
+import java.io.Serializable;
+import java.util.Objects;
 
-public class Services {
+public class Services implements Serializable{
 
-	private Vehicle vehicle;
-	private List<Parts> partsused;
-	private double labourCharges;
-	private double oilcost;
+	private static final long serialVersionUID = 1L;
+	private int ServiceId;
+	private String description;
+
 	
-	public  Services (Vehicle vehicle,List<Parts> partsused, double labourcharges,double oilcost) {
-		this.vehicle=vehicle;
-		this.partsused=partsused;
-		this.labourCharges=labourcharges;
-		this.oilcost=oilcost;
-		
-		
+	public Services(int nextInt, String next) {
+		ServiceId = nextInt;
+		this.description = description;
 	}
 
-	public Vehicle getVehicle() {
-		return vehicle;
+	public int getServiceId() {
+		return ServiceId;
+	}
+	public void setServiceId(int serviceId) {
+		ServiceId = serviceId;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public void setVehicle(Vehicle vehicle) {
-		this.vehicle = vehicle;
+	@Override
+	public String toString() {
+		return "Service [ServiceId=" + ServiceId + ", description=" + description + "]";
 	}
 
-	public List<Parts> getPartsused() {
-		return partsused;
+	@Override
+	public int hashCode() {
+		return Objects.hash(ServiceId, description);
 	}
 
-	public void setPartsused(List<Parts> partsused) {
-		this.partsused = partsused;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Services other = (Services) obj;
+		return ServiceId == other.ServiceId && Objects.equals(description, other.description);
 	}
-
-	public double getLabourCharges() {
-		return labourCharges;
-	}
-
-	public void setLabourCharges(double labourCharges) {
-		this.labourCharges = labourCharges;
-	}
-
-	public double getOilcost() {
-		return oilcost;
-	}
-
-	public void setOilcost(double oilcost) {
-		this.oilcost = oilcost;
-	}
+	
 	
 	
 }
