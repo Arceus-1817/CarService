@@ -1,7 +1,5 @@
 package com.casestudy.dao;
 
-public class VehicleDao {
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

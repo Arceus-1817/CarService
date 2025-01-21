@@ -27,7 +27,7 @@ public class Vehiclesubmenu {
 	
 static HashSet<Vehicle> VehicleSet =new HashSet<>();
 	
-	public static void  CSmenu(Scanner sc) throws FileNotFoundException, ClassNotFoundException, IOException {
+	public static void  VSmenu(Scanner sc) throws FileNotFoundException, ClassNotFoundException, IOException {
 
 		int CSchoice;
 
