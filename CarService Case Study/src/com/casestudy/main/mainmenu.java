@@ -8,6 +8,11 @@ import com.casestudy.submenu.*;
 
 public class mainmenu {	
 	
+	public static String gst;
+
+
+
+
 	public static int menu(Scanner sc) {
 		int choice;
 		System.out.println("********************************************");
