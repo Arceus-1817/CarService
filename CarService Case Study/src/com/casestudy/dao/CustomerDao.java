@@ -44,15 +44,8 @@ public class CustomerDao implements Serializable{
 			
 		}
 		
-<<<<<<< HEAD
 
 	}
-
-
-=======
-	}
->>>>>>> main
-	
 	
 	
 public static Customer readspecific(String num) throws FileNotFoundException, IOException, ClassNotFoundException {

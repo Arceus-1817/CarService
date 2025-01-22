@@ -1,38 +1,4 @@
 package com.casestudy.dao;
-
-<<<<<<< HEAD
-
-	import java.io.File;
-	import java.io.FileInputStream;
-	import java.io.FileNotFoundException;
-	import java.io.FileOutputStream;
-	import java.io.IOException;
-	import java.io.ObjectInputStream;
-	import java.io.ObjectOutputStream;
-	import java.security.Provider.Service;
-    import java.util.HashSet;
-
-import com.casestudy.Services;
-
-
-	
-public class ServiceDao {
-	
-	public static HashSet<Services> readService() throws FileNotFoundException, IOException, ClassNotFoundException {
-		
-		try(FileInputStream fis = new FileInputStream(new File("Services.txt"))){
-			
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			HashSet<Services> serviceSet = (HashSet<Services>) ois.readObject();
-			return serviceSet;
-			
-		}
-		
-	}
-	
-
-
-=======
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -48,7 +14,6 @@ import com.casestudy.*;
 public class ServiceDao implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
->>>>>>> main
 	
 	
 	public static void writeService(HashSet<Services> serviceSet) throws FileNotFoundException, IOException {
@@ -62,9 +27,7 @@ public class ServiceDao implements Serializable{
 		
 	}
 	
-<<<<<<< HEAD
-}
-=======
+
 	public static HashSet<Services> readService() throws IOException, ClassNotFoundException {
 	    File file = new File("Services.txt");
 	    if (!file.exists()) {
@@ -80,4 +43,3 @@ public class ServiceDao implements Serializable{
 	    }
 	}
 }
->>>>>>> main
