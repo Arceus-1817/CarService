@@ -79,6 +79,29 @@ public class VehicleDao implements Serializable{
 		}
 		
 	}
+	
+	
+	
+	
+public static Vehicle readspecific(String num) throws FileNotFoundException, IOException, ClassNotFoundException {
+		
+		
+		
+		try(FileInputStream fis = new FileInputStream(new File("Vehicle.txt"))){
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			
+			HashSet<Vehicle> vehicle = (HashSet<Vehicle>) ois.readObject();
+			for(Vehicle ele : vehicle) {
+			if(ele.getReg_no
+					().equals(num)) {
+			return ele;
+			}
 
+			}
+			
+		}
+		return null;
+		
+	}
 
 }
