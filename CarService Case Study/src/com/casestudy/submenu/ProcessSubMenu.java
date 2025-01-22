@@ -45,8 +45,8 @@ public class ProcessSubMenu {
                     existingService(sc);
                     break;
                 case 3:
-                    serviceCost += maintenance(sc);
-                    break;
+                	serviceCost +=Services();
+                	break;
                 case 4:
                     serviceCost += repairing(sc);
                     break;

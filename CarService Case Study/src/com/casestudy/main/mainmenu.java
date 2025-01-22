@@ -8,12 +8,6 @@ import com.casestudy.submenu.*;
 
 public class mainmenu {	
 	
-<<<<<<< HEAD
-	public static double gst;
-=======
-	public static String gst;
->>>>>>> 9082f1fd4bca3e1acbd1ce9f01d97f6494d9d9a6
-
 
 
 
