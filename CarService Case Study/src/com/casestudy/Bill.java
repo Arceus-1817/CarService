@@ -152,14 +152,14 @@ public class Bill {
 		System.out.println("\nOil Change Cost:        "+ oilChangeCost+ "rs");
 		System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		System.out.println("\nTotal:                  "+ bill.getAmount()+ "rs");
-		System.out.println("\nGST:                    "+ mainmenu.gst+ "%");
-		bill.setAmount(bill.getAmount()+ ((bill.getAmount()*mainmenu.gst)/100));
+		System.out.println("\nGST:                    "+ 12.5+ "%");
+		bill.setAmount(bill.getAmount()+ ((bill.getAmount()*12.5)/100));
 		System.out.println("\nFinal Total (With GST): "+ bill.getAmount()+ "rs");
 		System.out.println("\n########## Thank You For Taking Our Service! ###########\n");
 		
 		
-//		HashMap<Date, Double> billMap = DailyBuisness.readDailyBuisness();
-//		double temp = (double) billMap.get(date);
-//		billMap.put(date, temp + bill.getAmount());
-//		DailyBuisness.writeDailyBuisness(billMap);
+		HashMap<Date, Double> billMap = DailyBuisness.readDailyBuisness();
+		double temp = (double) billMap.get(date);
+		billMap.put(date, temp + bill.getAmount());
+		DailyBuisness.writeDailyBuisness(billMap);
 		

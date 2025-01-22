@@ -3,7 +3,13 @@ package com.casestudy.main;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Scanner;
+
+import com.casestudy.Bill;
+import com.casestudy.Vehicle;
+import com.casestudy.dao.CustomerDao;
+import com.casestudy.dao.VehicleDao;
 import com.casestudy.submenu.*;
 
 public class mainmenu {	
@@ -28,7 +34,7 @@ public class mainmenu {
 		
 	}
 	
-
+	
 
 	
 	public static void main (String []args) throws FileNotFoundException, ClassNotFoundException, IOException {
@@ -53,7 +59,10 @@ public class mainmenu {
 			
 				
 			case 3:
+				ServiceSubmenu.processSubMenu(null,CustomerDao.readCustomer()
+						, VehicleDao.readVehicle() , Date);
 				ProcessSubMenu.processMenu(sc);
+ main
 				break;
 				
 				
