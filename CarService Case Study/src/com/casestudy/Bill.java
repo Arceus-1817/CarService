@@ -154,16 +154,17 @@ public class Bill {
 		System.out.println("\nOil Change Cost:        "+ oilChangeCost+ "rs");
 		System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		
-		double gst = (bill.getAmount() * 12.5) / 100;
-		bill.setAmount(bill.getAmount() + gst);
+		double t=serviceCost+maintainanceCost+repairCost+oilChangeCost;
+		double gst = t * 12.5 / 100;
+		double total =t + gst;
 		
 		
-		System.out.println("\nTotal:                  "+ bill.getAmount()+ "rs");
-		System.out.println("\nGST:                    "+ gst);
+		System.out.println("\nTotal:                  "+ t+ "rs");
+		System.out.println("\nGST:                    "+ 12.5);
 		//bill.setAmount(bill.getAmount()+ ((bill.getAmount()*gst)/100));
-		System.out.println("\nFinal Total (With GST): "+ bill.getAmount()+ "rs");
+		System.out.println("\nFinal Total (With GST): "+ total+ "rs");
 		System.out.println("\n########## Thank You For Taking Our Service! ###########\n");
-		
+		bill.setAmount(total);
 		
 		//HashMap<Date, Double> billMap = DailyBuisness.readDailyBuisness();
 		//double temp = (double) billMap.get(date);
