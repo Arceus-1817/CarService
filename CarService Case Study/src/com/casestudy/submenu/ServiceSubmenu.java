@@ -119,12 +119,24 @@ public class ServiceSubmenu {
 		
 	}
 	
+	private static int servicemenu(Scanner sc) {
+		System.out.println("**********************");
+		System.out.println("1. oil change");
+		System.out.println("2. repair ");
+		//System.out.println("**********************");
+		//System.out.println("**********************");
+		//System.out.println("**********************");
+		System.out.println("**********************");
+		return sc.nextInt();
+	}
+	
+	
 	public static Bill processSubMenu(Bill bill, Customer c, Vehicle v, Date date) throws FileNotFoundException, ClassNotFoundException, IOException {
 			
 		int choice;
 		double serviceCost = 0, maintainanceCost = 0, repairCost = 0, oilChangeCost = 0;
 		Scanner sc = new Scanner(System.in);
-		
+		HashSet<Services> serviceSet = ServiceDao.readService();
 		while(true) {
 			
 			choice = menu(sc);
@@ -140,12 +152,23 @@ public class ServiceSubmenu {
 				maintainanceCost = maintainance(sc, bill);
 				break;
 			case 4:
-				repairCost = repairing(sc, bill);
-				break;
-			case 5:
-				oilChangeCost = oilChange(sc, bill);
-				break;
-			case 6:
+				while(true) {
+					int ch=servicemenu(sc);
+					switch (ch) {
+					case 1:
+						repairCost = repairing(sc, bill);
+						break;
+						
+					case 2:	
+						oilChangeCost = oilChange(sc, bill);
+						break;
+					default:
+						break;
+					}
+				}
+				
+				
+				case 5:
 				Bill.printBill(bill, c, v, serviceCost, maintainanceCost, repairCost, oilChangeCost, date);
 				return bill;
 			default:
@@ -156,5 +179,6 @@ public class ServiceSubmenu {
 		}
 		
 	}
+
 	
 }
