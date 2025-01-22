@@ -44,6 +44,11 @@ public class CustomerDao implements Serializable{
 			
 		}
 		
+<<<<<<< HEAD
+
+	}
+}
+=======
 	}
 	
 	
@@ -70,3 +75,4 @@ public static Customer readspecific(String num) throws FileNotFoundException, IO
 	}
 }
 
+>>>>>>> 9082f1fd4bca3e1acbd1ce9f01d97f6494d9d9a6
