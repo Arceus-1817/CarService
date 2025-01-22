@@ -8,8 +8,6 @@ import com.casestudy.submenu.*;
 
 public class mainmenu {	
 	
-	public static String gst;
-
 
 
 
@@ -55,7 +53,7 @@ public class mainmenu {
 			
 				
 			case 3:
-				ServiceSubmenu.SSmenu(sc);
+				ProcessSubMenu.processMenu(sc);
 				break;
 				
 				
