@@ -7,14 +7,14 @@ public class Parts implements Serializable {
 
 	private String PartId;
 	private String PartName;
-	private double Prize;
+	private double Price;
 	
 	
 	
-	public  Parts(String partId, String partName, double prize) {
+	public  Parts(String partId, String partName, double price) {
 		PartId = partId;
 		PartName = partName;
-		this.Prize = prize;
+		this.Price = Price;
 	}
 	public String getPartId() {
 		return PartId;
@@ -28,15 +28,13 @@ public class Parts implements Serializable {
 	public void setPartName(String partName) {
 		PartName = partName;
 	}
-	public double getPrize() {
-		return Prize;
-	}
+	
 	public  void setPrize(double prize) {
-		 Prize= prize;
+		Price= Price;
 	}
 	@Override
 	public String toString() {
-		return "Parts [PartId=" + PartId + ", PartName=" + PartName + ", prize=" + Prize + "]";
+		return "Parts [PartId=" + PartId + ", PartName=" + PartName + ", prize=" + Price + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -52,6 +50,9 @@ public class Parts implements Serializable {
 			return false;
 		Parts other = (Parts) obj;
 		return Objects.equals(PartId, other.PartId);
+	}
+	public double getPrice() {
+		return Price;
 	}
 	
 	

@@ -78,7 +78,7 @@ public class ServiceSubmenu {
 				System.out.println("Enter Labour Charge: ");
 				double labourCharge = sc.nextDouble();
 				
-				bill.setAmount(bill.getAmount()+ labourCharge + ele.getPrize());
+				bill.setAmount(bill.getAmount()+ labourCharge + ele.getPrice());
 				return bill.getAmount();
 				
 			}

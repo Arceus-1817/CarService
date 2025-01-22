@@ -1,5 +1,4 @@
 package com.casestudy;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
@@ -11,8 +10,8 @@ import java.util.Objects;
 
 import com.casestudy.main.*;
 import com.casestudy.*;
+public class Bill {
 
-public class Bill implements Serializable{
 	
 	/**
 	 * 
@@ -164,8 +163,3 @@ public class Bill implements Serializable{
 		billMap.put(date, temp + bill.getAmount());
 		DailyBuisness.writeDailyBuisness(billMap);
 		
-	}
-	
-	
-	
-}
