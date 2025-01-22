@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 import com.casestudy.*;
 import com.casestudy.dao.*;
+import com.casestudy.main.mainmenu;
 import com.casestudy.submenu.ServiceSubmenu;
 
 public class ServiceStation {
@@ -24,7 +25,7 @@ public class ServiceStation {
 		
 		bill.printDate();
 		date.convertDate(bill.getC());
-		MainMenu.billMap.put(date, (double) 0);
+		mainmenu.billMap.put(date, (double) 0);
 		
 		
 		System.out.println("Enter Customer Mobile Number: ");
@@ -42,7 +43,7 @@ public class ServiceStation {
 	public static Bill serviceStation(HashMap<Customer, Vehicle> map, Date date) throws FileNotFoundException, ClassNotFoundException, IOException {
 		
 			Scanner sc = new Scanner(System.in);
-			HashSet<Service> ServiceSet = ServicesDao.readService();
+			HashSet<Services> ServiceSet = ServiceDao.readService();
 			map = CustomerDao.readMap();
 			Bill bill = new Bill();
 			return selectVehicle(bill, sc, map, date);
