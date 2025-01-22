@@ -4,15 +4,16 @@ package com.casestudy;
 	
 		private static final long serialVersionUID = 1L;
 		private double laborCharges;
-		private LinkedList<Parts> partList;
-		public Maintainance() {
-			this.laborCharges=0.0;
-			
-		}
-		public Maintainance(String desc, double laborCharges) {
-			super(desc);
+		private String workDes;
+		
+//		public Maintainance() {
+//			this.laborCharges=0.0;
+//			
+//		}
+		public Maintainance(String Des, double laborCharges) {
+			super(Des);
 			this.laborCharges = laborCharges;
-			this.partList = new LinkedList<>();
+			this.workDes =Des ;
 		}
 		public double getLaborCharges() {
 			return laborCharges;
@@ -20,26 +21,41 @@ package com.casestudy;
 		public void setLaborCharges(double laborCharges) {
 			this.laborCharges = laborCharges;
 		}
-		public LinkedList<Parts> getPartList() {
-			return partList;
+		
+		
+		
+//		public LinkedList<Parts> getPartList() {
+//			return partList;
+//		}
+//		public void setPartList(LinkedList<Parts> partList) {
+//			this.partList = partList;
+//		}
+//		public void newSparePart(Parts part) {
+//			this.partList.add(part);
+//		}
+		
+		
+		public String getWorkDes() {
+			return workDes;
 		}
-		public void setPartList(LinkedList<Parts> partList) {
-			this.partList = partList;
+		public void setWorkDes(String workDes) {
+			this.workDes = workDes;
 		}
-		public void newSparePart(Parts part) {
-			this.partList.add(part);
-		}
-		@Override
-		public double price() {
-			double total = this.laborCharges;
-			for (Parts part : partList) {
-				total += part.getPrice();
-			}
-			return total;
-		}
+//		public double price() {
+//			double total = this.laborCharges;
+//			for (Parts part : partList) {
+//				total += part.getPrice();
+//			}
+//			return total;
+//		}
+		
+		
 
 		@Override
 		public String toString() {
 			return "[M] " + super.toString();
+		}
+		public double price(double laborCharges) {
+			return this.laborCharges;
 		}
 	}

@@ -6,19 +6,19 @@ import java.util.Objects;
 public class Services implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	private int ServiceId;
+	private String ServiceId;
 	private String description;
 
 	
-	public Services(int nextInt, String next) {
-		ServiceId = nextInt;
+	public Services(String next) {
+		ServiceId = next;
 		this.description = next;
 	}
 
-	public int getServiceId() {
+	public String getServiceId() {
 		return ServiceId;
 	}
-	public void setServiceId(int serviceId) {
+	public void setServiceId(String serviceId) {
 		ServiceId = serviceId;
 	}
 	public String getDescription() {
