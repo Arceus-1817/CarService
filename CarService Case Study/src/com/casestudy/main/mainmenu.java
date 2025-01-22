@@ -14,6 +14,8 @@ import com.casestudy.submenu.*;
 
 public class mainmenu {	
 	
+	public static String gst;
+
 
 
 
@@ -59,14 +61,7 @@ public class mainmenu {
 			
 				
 			case 3:
-<<<<<<< HEAD
 				ServiceSubmenu.processSubMenu();
-=======
-				ServiceSubmenu.processSubMenu(null,CustomerDao.readCustomer()
-						, VehicleDao.readVehicle() , Date);
-				ProcessSubMenu.processMenu(sc);
- main
->>>>>>> fafa134c7105e582897fd5989b823724c82b151c
 				break;
 				
 				

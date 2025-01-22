@@ -139,6 +139,7 @@ public class Bill {
 	}
 
 
+
 	public static void printBill(Bill bill, Customer customer, Vehicle vehicle, double serviceCost, double maintainanceCost, double repairCost, double oilChangeCost /*Date date*/) throws FileNotFoundException, ClassNotFoundException, IOException {
 		System.out.println("################# Final Bill Summary ##################");
 		System.out.println("\nCustomer: "+ customer.getName()+ "  Mobile: "+ customer.getPh_no());
@@ -168,4 +169,5 @@ public class Bill {
 		//double temp = (double) billMap.get(date);
 		//billMap.put(date, temp + bill.getAmount());
 		//DailyBuisness.writeDailyBuisness(billMap);
-		
+	}
+}

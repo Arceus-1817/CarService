@@ -1,43 +1,55 @@
 package com.casestudy;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 
-
-
-public abstract class Services implements Serializable{
+public class Services implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	private int ServiceId;
 	private String description;
 
-<<<<<<< HEAD
 	
 	public Services(int nextInt, String next) {
 		ServiceId = nextInt;
 		this.description = next;
-=======
-	public Services() {
-		this("");
-	}
-	public Services( String next) {
-		this.description = description;
->>>>>>> fafa134c7105e582897fd5989b823724c82b151c
 	}
 
+	public int getServiceId() {
+		return ServiceId;
+	}
+	public void setServiceId(int serviceId) {
+		ServiceId = serviceId;
+	}
 	public String getDescription() {
 		return description;
 	}
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public double price() {
-		return price();
-	}
+
 	@Override
 	public String toString() {
-		return "Services [getDescription()=" + getDescription() + ", price()=" + price() + "]";
+		return "Service [ServiceId=" + ServiceId + ", description=" + description + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(ServiceId, description);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Services other = (Services) obj;
+		return ServiceId == other.ServiceId && Objects.equals(description, other.description);
+	}
+	
 	
 	
 }

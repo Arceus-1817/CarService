@@ -1,9 +1,6 @@
 package com.casestudy.dao;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 9082f1fd4bca3e1acbd1ce9f01d97f6494d9d9a6
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
