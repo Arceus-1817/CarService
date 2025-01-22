@@ -1,9 +1,6 @@
 package com.casestudy.dao;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 9082f1fd4bca3e1acbd1ce9f01d97f6494d9d9a6
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -82,6 +79,29 @@ public class VehicleDao implements Serializable{
 		}
 		
 	}
+	
+	
+	
+	
+public static Vehicle readspecific(String num) throws FileNotFoundException, IOException, ClassNotFoundException {
+		
+		
+		
+		try(FileInputStream fis = new FileInputStream(new File("Vehicle.txt"))){
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			
+			HashSet<Vehicle> vehicle = (HashSet<Vehicle>) ois.readObject();
+			for(Vehicle ele : vehicle) {
+			if(ele.getReg_no
+					().equals(num)) {
+			return ele;
+			}
 
+			}
+			
+		}
+		return null;
+		
+	}
 
 }

@@ -138,7 +138,9 @@ public class Bill {
 				&& Objects.equals(vehicle, other.vehicle);
 	}
 
-	public static void printBill(Bill bill, Customer customer, Vehicle vehicle, double serviceCost, double maintainanceCost, double repairCost, double oilChangeCost, Date date) throws FileNotFoundException, ClassNotFoundException, IOException {
+
+
+	public static void printBill(Bill bill, Customer customer, Vehicle vehicle, double serviceCost, double maintainanceCost, double repairCost, double oilChangeCost /*Date date*/) throws FileNotFoundException, ClassNotFoundException, IOException {
 		System.out.println("################# Final Bill Summary ##################");
 		System.out.println("\nCustomer: "+ customer.getName()+ "  Mobile: "+ customer.getPh_no());
 		System.out.println("\nVehicle: "+ vehicle.getCompany()+ " "+ vehicle.getModel()+ "  Registration No: "+ vehicle.getReg_no());
@@ -151,15 +153,21 @@ public class Bill {
 		System.out.println("\nRepair Cost:            "+ repairCost+ "rs");
 		System.out.println("\nOil Change Cost:        "+ oilChangeCost+ "rs");
 		System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		
+		double gst = (bill.getAmount() * 12.5) / 100;
+		bill.setAmount(bill.getAmount() + gst);
+		
+		
 		System.out.println("\nTotal:                  "+ bill.getAmount()+ "rs");
-		System.out.println("\nGST:                    "+ 12.5+ "%");
-		bill.setAmount(bill.getAmount()+ ((bill.getAmount()*12.5)/100));
+		System.out.println("\nGST:                    "+ gst);
+		//bill.setAmount(bill.getAmount()+ ((bill.getAmount()*gst)/100));
 		System.out.println("\nFinal Total (With GST): "+ bill.getAmount()+ "rs");
 		System.out.println("\n########## Thank You For Taking Our Service! ###########\n");
 		
 		
-		HashMap<Date, Double> billMap = DailyBuisness.readDailyBuisness();
-		double temp = (double) billMap.get(date);
-		billMap.put(date, temp + bill.getAmount());
-		DailyBuisness.writeDailyBuisness(billMap);
-		
+		//HashMap<Date, Double> billMap = DailyBuisness.readDailyBuisness();
+		//double temp = (double) billMap.get(date);
+		//billMap.put(date, temp + bill.getAmount());
+		//DailyBuisness.writeDailyBuisness(billMap);
+	}
+}
