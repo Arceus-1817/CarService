@@ -12,7 +12,7 @@ public class Services implements Serializable{
 	
 	public Services(int nextInt, String next) {
 		ServiceId = nextInt;
-		this.description = description;
+		this.description = next;
 	}
 
 	public int getServiceId() {

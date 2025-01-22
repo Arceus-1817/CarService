@@ -61,8 +61,7 @@ public class mainmenu {
 			
 				
 			case 3:
-				ServiceSubmenu.processSubMenu(null,CustomerDao.readCustomer()
-						, VehicleDao.readVehicle() , Date);
+				ServiceSubmenu.processSubMenu();
 				break;
 				
 				
