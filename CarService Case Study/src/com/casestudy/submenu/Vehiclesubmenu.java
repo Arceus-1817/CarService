@@ -31,6 +31,13 @@ public class Vehiclesubmenu {
 		System.out.println("********************************************");
 		return sc.nextInt();
 	}
+<<<<<<< HEAD
+	
+static HashSet<Vehicle> VehicleSet =new HashSet<>();
+	
+	public static void  VSmenu(Scanner sc) throws FileNotFoundException, ClassNotFoundException, IOException {
+=======
+>>>>>>> main
 	 static HashSet<Vehicle> VehicleSet =new HashSet<Vehicle>();
 	 static HashMap<Customer, Vehicle> vehicleMap = new HashMap<>();
 	  
