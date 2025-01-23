@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Parts implements Serializable {
-
+	private static final long serialVersionUID = -7903184526549624082L;
 	private String PartId;
 	private String PartName;
 	private double Price;

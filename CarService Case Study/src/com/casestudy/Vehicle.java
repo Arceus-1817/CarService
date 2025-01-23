@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class Vehicle implements Serializable{
+	//private static final long serialVersionUID = 1L;
 	protected String Reg_no;
 	protected String Company;
 	protected String model;

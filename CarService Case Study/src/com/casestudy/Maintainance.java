@@ -11,7 +11,7 @@ package com.casestudy;
 //			
 //		}
 		public Maintainance(String Des, double laborCharges) {
-			super(Des);
+			super(Des, Des);
 			this.laborCharges = laborCharges;
 			this.workDes =Des ;
 		}
@@ -48,14 +48,15 @@ package com.casestudy;
 //			}
 //			return total;
 //		}
-		
-		
 
-		@Override
-		public String toString() {
-			return "[M] " + super.toString();
-		}
+		
+		
 		public double price(double laborCharges) {
 			return this.laborCharges;
 		}
+		@Override
+		public String toString() {
+			return super.toString();
+		}
+		
 	}

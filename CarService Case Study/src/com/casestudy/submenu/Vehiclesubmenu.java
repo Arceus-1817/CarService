@@ -1,8 +1,5 @@
+
 //delete
-
-
-
-
 package com.casestudy.submenu;
 
 import java.io.FileNotFoundException;
@@ -33,7 +30,7 @@ public class Vehiclesubmenu {
 	}
 	 static HashSet<Vehicle> VehicleSet =new HashSet<Vehicle>();
 	 static HashMap<Customer, Vehicle> vehicleMap = new HashMap<>();
-	  
+	   
 	   
 	        
 	public static void  VSmenu(Scanner sc)throws FileNotFoundException, ClassNotFoundException, IOException  {
