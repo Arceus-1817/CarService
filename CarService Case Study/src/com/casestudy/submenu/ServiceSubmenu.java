@@ -14,20 +14,20 @@ public class ServiceSubmenu {
 	private static void newService(Scanner sc) throws IOException, ClassNotFoundException {
 	    HashSet<Services> serviceSet = ServiceDao.readService();
 	    if (serviceSet == null) {
-	        serviceSet = new HashSet<>();  // Ensure serviceSet is initialized
+	        serviceSet = new HashSet<>(); 
 	    }
 
 	    System.out.println("Enter ServiceId (numeric) and Service Description (text):");
 	    if (sc.hasNextDouble()) {
 	        Double serviceId = sc.nextDouble();
-	        sc.nextLine();  // Consume the remaining newline
-	        String description = sc.nextLine();  // Read full description
+	        sc.nextLine();  
+	        String description = sc.nextLine(); 
 	        serviceSet.add(new Services(serviceId, description));
 	        ServiceDao.writeService(serviceSet);
 	        System.out.println("New service added successfully!");
 	    } else {
 	        System.out.println("Invalid ServiceId. Please enter a numeric value.");
-	        sc.nextLine();  // Clear invalid input
+	        sc.nextLine(); 
 	    }
 	}
 
@@ -56,7 +56,7 @@ public class ServiceSubmenu {
 	        System.out.println("No service found with the provided ServiceId.");
 	    } else {
 	        System.out.println("Invalid ServiceId. Please enter a numeric value.");
-	        sc.nextLine();  // Clear invalid input
+	        sc.nextLine(); 
 	    }
 	    return 0;
 	}
@@ -119,23 +119,23 @@ public class ServiceSubmenu {
     }
     private static int menu(Scanner sc) {
         int choice = -1;
-        while (choice < 0 || choice > 6) {  // Loop until a valid choice is entered
-            System.out.println("########Process Request#######");
+        while (choice < 0 || choice > 6) { 
+            System.out.println("******************************");
             System.out.println("1. New Service");
             System.out.println("2. Existing Service");
             System.out.println("3. Maintainance");
             System.out.println("4. Service menu");
             System.out.println("5. Generate Bill");
-            System.out.println("##############################");
+            System.out.println("******************************");
 
             System.out.print("Enter choice: ");
             
             if (sc.hasNextInt()) {
-                choice = sc.nextInt();  // Read integer input
-                sc.nextLine();  // Clear the buffer
+                choice = sc.nextInt(); 
+                sc.nextLine(); 
             } else {
                 System.out.println("Invalid input! Please enter a valid number.");
-                sc.nextLine();  // Clear invalid input
+                sc.nextLine();  
             }
         }
         return choice;
@@ -198,7 +198,7 @@ public class ServiceSubmenu {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();  // Print the exception stack trace for debugging
+            e.printStackTrace(); 
         }
         return bill;
     }
