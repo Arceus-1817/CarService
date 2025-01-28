@@ -142,7 +142,8 @@ public class ServiceSubmenu {
     }
 
     public static Bill processSubMenu() {
-        double serviceCost = 0, maintainanceCost = 0, repairCost = 0, oilChangeCost = 0;
+      double serviceCost = 0, repairCost = 0, oilChangeCost = 0;
+	double maintainanceCost = 0;
         Scanner sc = new Scanner(System.in);
         Bill bill = new Bill();
 
