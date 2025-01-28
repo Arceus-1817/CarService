@@ -3,6 +3,7 @@ package com.casestudy.submenu;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Scanner;
 
 import com.casestudy.dao.*;
@@ -10,30 +11,56 @@ import com.casestudy.*;
 
 public class ServiceSubmenu {
 
-    private static void newService(Scanner sc) throws IOException, ClassNotFoundException {
-        HashSet<Services> serviceSet = ServiceDao.readService();
-        System.out.println("Enter ServiceId and Service Description: ");
-        serviceSet.add(new Services(sc.nextInt(), sc.next()));
-        ServiceDao.writeService(serviceSet);
-    }
+	private static void newService(Scanner sc) throws IOException, ClassNotFoundException {
+	    HashSet<Services> serviceSet = ServiceDao.readService();
+	    if (serviceSet == null) {
+	        serviceSet = new HashSet<>(); 
+	    }
 
-    private static double existingService(Scanner sc) throws IOException, ClassNotFoundException {
-        HashSet<Services> serviceSet = ServiceDao.readService();
-        for (Services ele : serviceSet) {
-            System.out.println(ele);
-        }
+	    System.out.println("Enter ServiceId (numeric) and Service Description (text):");
+	    if (sc.hasNextDouble()) {
+	        Double serviceId = sc.nextDouble();
+	        sc.nextLine();  
+	        String description = sc.nextLine(); 
+	        serviceSet.add(new Services(serviceId, description));
+	        ServiceDao.writeService(serviceSet);
+	        System.out.println("New service added successfully!");
+	    } else {
+	        System.out.println("Invalid ServiceId. Please enter a numeric value.");
+	        sc.nextLine(); 
+	    }
+	}
 
-        System.out.println("Enter ServiceID to proceed: ");
-        int id = sc.nextInt();
-        for (Services ele : serviceSet) {
-            if (ele.getServiceId() == id) {
-                System.out.println("Enter Service Charges: ");
-                return sc.nextDouble();
-            }
-        }
-        System.out.println("Enter valid ServiceID!!!");
-        return 0;
-    }
+
+	private static double existingService(Scanner sc) throws IOException, ClassNotFoundException {
+	    HashSet<Services> serviceSet = ServiceDao.readService();
+	    if (serviceSet == null || serviceSet.isEmpty()) {
+	        System.out.println("No services available.");
+	        return 0;
+	    }
+
+	    System.out.println("Available services:");
+	    for (Services ele : serviceSet) {
+	        System.out.println(ele);
+	    }
+
+	    System.out.println("Enter ServiceId to proceed:");
+	    if (sc.hasNextDouble()) {
+	        Double id = sc.nextDouble();
+	        for (Services ele : serviceSet) {
+	            if (Objects.equals(ele.getServiceId(), id)) {
+	                System.out.println("Enter Service Charges:");
+	                return sc.nextDouble();
+	            }
+	        }
+	        System.out.println("No service found with the provided ServiceId.");
+	    } else {
+	        System.out.println("Invalid ServiceId. Please enter a numeric value.");
+	        sc.nextLine(); 
+	    }
+	    return 0;
+	}
+
 
     private static double maintainance(Scanner sc, Bill bill) {
         System.out.println("Enter Maintainance Cost: ");
@@ -84,6 +111,7 @@ public class ServiceSubmenu {
 
     private static int servicemenu(Scanner sc) {
     	System.out.println("**********************");
+    	System.out.println("0. exit");
     	System.out.println("1. oil change");
     	System.out.println("2. repair ");
     	System.out.println("**********************");
@@ -91,30 +119,31 @@ public class ServiceSubmenu {
     }
     private static int menu(Scanner sc) {
         int choice = -1;
-        while (choice < 0 || choice > 6) {  // Loop until a valid choice is entered
-            System.out.println("########Process Request#######");
+        while (choice < 0 || choice > 6) { 
+            System.out.println("******************************");
             System.out.println("1. New Service");
             System.out.println("2. Existing Service");
             System.out.println("3. Maintainance");
-            System.out.println("4. Repairing");
-            System.out.println("6. Generate Bill");
-            System.out.println("##############################");
+            System.out.println("4. Service menu");
+            System.out.println("5. Generate Bill");
+            System.out.println("******************************");
 
             System.out.print("Enter choice: ");
             
             if (sc.hasNextInt()) {
-                choice = sc.nextInt();  // Read integer input
-                sc.nextLine();  // Clear the buffer
+                choice = sc.nextInt(); 
+                sc.nextLine(); 
             } else {
                 System.out.println("Invalid input! Please enter a valid number.");
-                sc.nextLine();  // Clear invalid input
+                sc.nextLine();  
             }
         }
         return choice;
     }
 
     public static Bill processSubMenu() {
-        double serviceCost = 0, maintainanceCost = 0, repairCost = 0, oilChangeCost = 0;
+      double serviceCost = 0, repairCost = 0, oilChangeCost = 0;
+	double maintainanceCost = 0;
         Scanner sc = new Scanner(System.in);
         Bill bill = new Bill();
 
@@ -170,7 +199,7 @@ public class ServiceSubmenu {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();  // Print the exception stack trace for debugging
+            e.printStackTrace(); 
         }
         return bill;
     }

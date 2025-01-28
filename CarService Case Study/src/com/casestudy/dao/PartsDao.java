@@ -39,6 +39,7 @@ import com.casestudy.*;
 			try(FileInputStream fis = new FileInputStream(new File("Parts.txt"))){
 				ObjectInputStream ois = new ObjectInputStream(fis);
 				
+				@SuppressWarnings("unchecked")
 				LinkedList<Parts> PartsList = (LinkedList<Parts>) ois.readObject();
 				return PartsList;
 				
