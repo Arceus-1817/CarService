@@ -3,13 +3,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Objects;
 
 import com.casestudy.main.*;
 import com.casestudy.*;
+import com.casestudy.dao.DailyBuisness;
 public class Bill {
 
 	
@@ -141,12 +141,12 @@ public class Bill {
 
 
 	public static void printBill(Bill bill, Customer customer, Vehicle vehicle, double serviceCost, double maintainanceCost, double repairCost, double oilChangeCost /*Date date*/) throws FileNotFoundException, ClassNotFoundException, IOException {
-		System.out.println("################# Final Bill Summary ##################");
+		System.out.println("--------------- Final Bill Summary -----------------------");
 		System.out.println("\nCustomer: "+ customer.getName()+ "  Mobile: "+ customer.getPh_no());
 		System.out.println("\nVehicle: "+ vehicle.getCompany()+ " "+ vehicle.getModel()+ "  Registration No: "+ vehicle.getReg_no());
-		System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		System.out.println("\n*******************************************************");
 		bill.printDate();
-		System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		System.out.println("\n*******************************************************");
 		System.out.println("\n Description             Amount");
 		System.out.println("\nService Cost:           "+ serviceCost+ "rs");
 		System.out.println("\nMaintainance Cost:      "+ maintainanceCost+ "rs");
@@ -161,14 +161,27 @@ public class Bill {
 		
 		System.out.println("\nTotal:                  "+ t+ "rs");
 		System.out.println("\nGST:                    "+ 12.5);
-		//bill.setAmount(bill.getAmount()+ ((bill.getAmount()*gst)/100));
+		bill.setAmount(bill.getAmount()+ ((bill.getAmount()*gst)/100));
 		System.out.println("\nFinal Total (With GST): "+ total+ "rs");
 		System.out.println("\n########## Thank You For Taking Our Service! ###########\n");
 		bill.setAmount(total);
 		
-		//HashMap<Date, Double> billMap = DailyBuisness.readDailyBuisness();
-		//double temp = (double) billMap.get(date);
-		//billMap.put(date, temp + bill.getAmount());
-		//DailyBuisness.writeDailyBuisness(billMap);
+		Calendar calendar = Calendar.getInstance();
+		HashMap<Date, String> map =  DailyBuisness.readBuisness();
+
+		if(map.get(new Date(calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH) +1 , calendar.get(Calendar.YEAR))) == null) {
+
+			map.put(new Date(calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH) +1 , calendar.get(Calendar.YEAR)), String.valueOf(bill.getAmount()));
+
+
+		DailyBuisness.writeBuisness(map);
+
+		}else {
+
+		Double amount = Double.parseDouble(map.get(new Date(calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH) +1 , calendar.get(Calendar.YEAR))));
+		amount += bill.getAmount();
+		map.put(new Date(calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH) +1 , calendar.get(Calendar.YEAR)), amount.toString());
+		DailyBuisness.writeBuisness(map);
+		}
 	}
 }
