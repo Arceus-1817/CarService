@@ -22,7 +22,6 @@ public class customer_ui extends JFrame {
         setLayout(null);
         getContentPane().setBackground(Color.LIGHT_GRAY);
 
-        // Colors for hover effect
         Color defaultColor = Color.DARK_GRAY;
         Color hoverColor = Color.yellow;
        
