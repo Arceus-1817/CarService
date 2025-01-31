@@ -42,6 +42,7 @@ public class CustomerSubmenu {
 			case 1: 
 			System.out.println("Enter the name,phone number,address of the customer :");
 			CustomerSet.add(new Customer(sc.next(),sc.next(),sc.next()));
+			CustomerSet=CustomerDao.readCustomer();
 			CustomerDao.writeCustomer(CustomerSet);
 					
 				break;
@@ -87,6 +88,7 @@ public class CustomerSubmenu {
 						System.out.println("NO SUCH ENTRY IS PRESENT...");
 					}
 				}
+				CustomerSet=CustomerDao.readCustomer();
 				CustomerDao.writeCustomer(CustomerSet);
 				break;
 				
@@ -98,8 +100,9 @@ public class CustomerSubmenu {
 					if(Cdelete.equals(customer.getPh_no())) {
 						CustomerSet.remove(customer);
 						System.out.println("The record is deleted.....");
-						CustomerDao.writeCustomer(CustomerSet);
 					}
+					CustomerSet=CustomerDao.readCustomer();
+					CustomerDao.writeCustomer(CustomerSet);
 					
 					
 			

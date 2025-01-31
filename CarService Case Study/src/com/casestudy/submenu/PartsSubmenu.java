@@ -36,6 +36,7 @@ public class PartsSubmenu {
 				System.out.println("ENTER THE PARTS DETAILS(Id,NAME,PRIZE)");
 				
 				PartsList.add(new Parts(sc.next(),sc.next(),sc.nextDouble()));
+				PartsDao.readParts();
 				PartsDao.writeCustomer(PartsList);
 				break;
 			
@@ -68,6 +69,7 @@ public class PartsSubmenu {
 						}
 				
 				}
+				PartsDao.readParts();
 				PartsDao.writeCustomer(PartsList);
 				break;
 				
@@ -78,8 +80,9 @@ public class PartsSubmenu {
 					if(Cdelete.equals(parts.getPartId())) {
 						PartsList.remove(parts);
 						System.out.println("The record is deleted.....");
-						PartsDao.writeCustomer(PartsList);
 					}
+					PartsDao.readParts();
+					PartsDao.writeCustomer(PartsList);
 					
 					
 			
