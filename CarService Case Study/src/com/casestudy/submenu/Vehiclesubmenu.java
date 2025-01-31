@@ -61,9 +61,11 @@ public class Vehiclesubmenu {
 			    } else {
 			        System.out.println("Customer not found with phone number: " + phone);
 			    }
+			 VehicleDao.readVehicle();
+			 VehicleDao.writeVehicle(VehicleSet);
+			 VehicleDao.read();
 			 
 			VehicleDao.write(vehicleMap);
-			VehicleDao.writeVehicle(VehicleSet);
 			
 			 
 			//VehicleDao.writeVehicle(VehicleSet);
@@ -117,26 +119,38 @@ public class Vehiclesubmenu {
 						System.out.println("NO SUCH ENTRY IS PRESENT...");
 					}
 				}
+				VehicleDao.readVehicle();
+				 VehicleDao.read();
 				VehicleDao.write(vehicleMap);
 				VehicleDao.writeVehicle(VehicleSet);
 				break;
 				
 				
 			case 5:
-				HashSet<Vehicle> vehicle11 = VehicleDao.readVehicle();
+			    HashSet<Vehicle> vehicleToDelete = VehicleDao.readVehicle();
 
-				System.out.println("Enter the registered number of the car you want to delete :");
-				String Cdelete =sc.next();
-				for (Vehicle  ele: vehicle11) {
-					if(Cdelete.equals(ele.getReg_no())) {
-						vehicle11.remove(ele);
-						System.out.println("The record is deleted.....");
-					}
-					VehicleDao.writeVehicle(VehicleSet);
-				
-							
-	
-			}
+			    System.out.println("Enter the registered number of the car you want to delete:");
+			    String Cdelete = sc.next();
+			    Vehicle toRemove = null;
+
+			    for (Vehicle ele : vehicleToDelete) {
+			        if (Cdelete.equals(ele.getReg_no())) {
+			            toRemove = ele;
+			            break;
+			        }
+			    }
+
+			    if (toRemove != null) {
+			        vehicleToDelete.remove(toRemove);
+			        VehicleSet.remove(toRemove);
+			        System.out.println("The record has been deleted.");
+			    } else {
+			        System.out.println("No such entry is present.");
+			    }
+
+			    VehicleDao.writeVehicle(vehicleToDelete);
+			    break;
+
 		}
 	}
 	}	

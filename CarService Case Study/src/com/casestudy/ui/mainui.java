@@ -49,17 +49,22 @@ public class mainui extends JFrame{
         JButton b5 = new JButton("Sales");
         b5.setBounds(300, 380, 100, 50);
         add(b5);
+        JButton bill = new JButton("BILL");
+        bill.setBounds(300, 460, 50, 50);
+        add(bill);
         
         
         
         
         b1.addActionListener(e -> {
-            customerui wnd1 = new customerui(null);
+        	
+        	customerui wnd1 = new customerui();
             wnd1.setVisible(true);
+        	
         });
 
         b2.addActionListener(e -> {
-            vehicleui wnd2 = new vehicleui(null);
+            vehicleui wnd2 = new vehicleui();
             wnd2.setVisible(true);
         });
 
@@ -72,6 +77,14 @@ public class mainui extends JFrame{
             partsui wnd3 = new partsui(null);
             wnd3.setVisible(true);
         });
+        
+        
+        bill.addActionListener(e -> {
+        	billui wnd4 = new billui();
+        	wnd4.setVisible(true);
+        });
+        
+        
 
 //        todaysSalesButton.addActionListener(e -> {
 //            sales.todaysale();

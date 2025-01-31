@@ -24,6 +24,7 @@ public class VehicleDao implements Serializable{
 			
 			ObjectOutputStream os = new ObjectOutputStream(fos);
 			os.writeObject(vehicle);
+			os.close();
 			
 		}catch(Exception e){
 			
@@ -41,6 +42,7 @@ public class VehicleDao implements Serializable{
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			
 			HashSet<Vehicle> vehicle = (HashSet<Vehicle>) ois.readObject();
+			ois.close();
 			return vehicle;
 			
 		}
@@ -57,6 +59,8 @@ public class VehicleDao implements Serializable{
 			
 			ObjectOutputStream os = new ObjectOutputStream(fos);
 			os.writeObject(vehicleMap);
+			os.close();
+			
 			
 		}catch(Exception e){
 			
@@ -74,6 +78,7 @@ public class VehicleDao implements Serializable{
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			
 			HashMap<Object, Object> vehicle = (HashMap<Object,Object>) ois.readObject();
+			ois.close();
 			return vehicle;
 			
 		}
@@ -94,6 +99,7 @@ public static Vehicle readspecific(String num) throws FileNotFoundException, IOE
 			for(Vehicle ele : vehicle) {
 			if(ele.getReg_no
 					().equals(num)) {
+				ois.close();
 			return ele;
 			}
 

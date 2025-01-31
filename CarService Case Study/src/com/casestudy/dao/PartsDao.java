@@ -23,6 +23,7 @@ import com.casestudy.*;
 				
 				ObjectOutputStream os = new ObjectOutputStream(fos);
 				os.writeObject(PartsList);
+				os.close();
 				
 			}catch(Exception e){
 				
@@ -41,6 +42,7 @@ import com.casestudy.*;
 				
 				@SuppressWarnings("unchecked")
 				LinkedList<Parts> PartsList = (LinkedList<Parts>) ois.readObject();
+				ois.close();
 				return PartsList;
 				
 			}

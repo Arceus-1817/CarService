@@ -27,9 +27,6 @@ import com.casestudy.submenu.*;
 public class serviceui extends JFrame {
 
 	
-
-	//VS4E -- DO NOT REMOVE THIS LINE!
-
 		private static final long serialVersionUID = 1L;
 		private JRadioButton radOilService;
 		private JRadioButton radMaintenance;
@@ -152,22 +149,22 @@ public class serviceui extends JFrame {
 			return service;
 		}
 
-//		private void onBtnSubmitClick() {
-//			String desc = txtDesc.getText();
-//			double cost = Double.parseDouble(txtCost.getText());
-//			if(radOilService.isSelected()) {
-//				OilService os = new OilService();
-//				os.setDesc(desc);
-//				os.setCost(cost);
-//				this.service = os;
-//			} else {
-//				MaintenanceService ms = new MaintenanceService();
-//				ms.setDesc(desc);
-//				ms.setLaborCharges(cost);
-//				this.service = ms;
-//			}
-//			this.dispose();
-//		}
-//	}
+		private void onBtnSubmitClick() {
+			String desc = txtDesc.getText();
+			double cost = Double.parseDouble(txtCost.getText());
+			if(radOilService.isSelected()) {
+				OilService os = new OilService();
+				os.setDesc(desc);
+				os.setCost(cost);
+				this.service = os;
+			} else {
+				MaintenanceService ms = new MaintenanceService();
+				ms.setDesc(desc);
+				ms.setLaborCharges(cost);
+				this.service = ms;
+			}
+			this.dispose();
+		}
+	}
 
 }

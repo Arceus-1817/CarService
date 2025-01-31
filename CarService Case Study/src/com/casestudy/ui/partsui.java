@@ -11,8 +11,11 @@ package com.casestudy.ui;
 	import java.awt.Window;
 	import java.awt.event.ActionEvent;
 	import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.LinkedList;
 
-	import javax.swing.ButtonGroup;
+import javax.swing.ButtonGroup;
 	import javax.swing.JButton;
 	import javax.swing.JDialog;
 	import javax.swing.JLabel;
@@ -22,55 +25,70 @@ package com.casestudy.ui;
 	import javax.swing.event.ChangeListener;
 
 	import com.casestudy.*;
+import com.casestudy.dao.CustomerDao;
+import com.casestudy.dao.PartsDao;
 	
 
-	//VS4E -- DO NOT REMOVE THIS LINE!
 	public class partsui extends JDialog{
 
+		static LinkedList<Parts> PartsList=new LinkedList<>();
+
+		
 		private static final long serialVersionUID = 1L;
-		private JLabel lblDesc;
-		private JTextField txtDesc;
-		private JLabel lblCost;
-		private JTextField txtCost;
+		private JLabel lblid;
+		private JTextField txtId;
 		private JButton btnSubmit;
+		
 		private JLabel name;
 		private JTextField txtName;
+		private JLabel lblCost;
+		private JTextField txtCost;
 
 		public partsui(Window parent) {
+			
+	        		
 			super(parent);
 			this.setTitle("New Spare Part");
 			initComponents();
+			
+			
 		}
 
+		
 		private void initComponents() {
-			setForeground(Color.black);
-			setBackground(Color.white);
-			setFont(new Font("Dialog", Font.PLAIN, 12));
-			setLayout(null);
-			add(getTxtDesc());
-			add(getLblCost());
-			add(getTxtCost());
-			add(getBtnSubmit());
-			add(getLblDesc());
-			setSize(340, 231);
+		    setForeground(Color.black);
+		    setBackground(Color.white);
+		    setFont(new Font("Dialog", Font.PLAIN, 12));
+		    setLayout(null);
+
+		    add(getTxtName());
+		    add(getTxtId());
+		    add(getTxtCost());
+		    add(getBtnSubmit());
+		    add(getLblCost());
+		    add(getname());
+		    add(getLblid());
+
+		    setSize(340, 231);
 		}
+
 
 		private JLabel getname() {
 			if (name == null) {
 				name = new JLabel();
 				name.setText("Name: ");
-				name.setBounds(20, 58, 86, 20);
+				name.setBounds(20, 58, 56, 20);
 			}
 			return name;
 		}
 		
-		private JLabel getLblDesc() {
-			if (lblDesc == null) {
-				lblDesc = new JLabel();
-				lblDesc.setText("Description: ");
-				lblDesc.setBounds(20, 58, 86, 20);
+		private JLabel getLblid() {
+			if (lblid == null) {
+				lblid = new JLabel();
+				lblid.setText("ID: ");
+				lblid.setBounds(20, 28, 86, 20);
 			}
-			return lblDesc;
+			return lblid;
 		}
 		
 
@@ -82,7 +100,15 @@ package com.casestudy.ui;
 				btnSubmit.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						onBtnSubmitClick();
+						try {
+							try {
+								onBtnSubmitClick(e);
+							} catch (ClassNotFoundException e1) {
+								e1.printStackTrace();
+							}
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
 					}
 				});
 			}
@@ -101,7 +127,7 @@ package com.casestudy.ui;
 			if (lblCost == null) {
 				lblCost = new JLabel();
 				lblCost.setText("Rate:");
-				lblCost.setBounds(18, 93, 100, 20);
+				lblCost.setBounds(20, 93, 100, 20);
 			}
 			return lblCost;
 		}
@@ -109,31 +135,67 @@ package com.casestudy.ui;
 		private JTextField getTxtName() {
 			if (txtName == null) {
 				txtName = new JTextField();
-				txtName.setBounds(130, 57, 174, 20);
+				txtName.setBounds(130, 58, 174, 20);
 			}
 			return txtName;
 		}
 
-		private JTextField getTxtDesc() {
-			if (txtDesc == null) {
-				txtDesc = new JTextField();
-				txtDesc.setBounds(130, 57, 174, 20);
+		private JTextField getTxtId() {
+			if (txtId == null) {
+				txtId = new JTextField();
+				txtId.setBounds(130, 28, 174, 20);
 			}
-			return txtDesc;
+			return txtId;
 		}
 
-		private Parts sparePart = null;
-		
-		public Parts getSparePart() {
-			return sparePart;
+//		private Parts sparePart = null;
+//		
+//		public Parts getSparePart() {
+//			return sparePart;
+//		}
+
+		private void onBtnSubmitClick(ActionEvent event) throws IOException, ClassNotFoundException {
+		    if (txtName == null || txtId == null || txtCost == null) {
+		        System.out.println("Input fields are not initialized.");
+		        return;
+		    }
+
+		    String name = txtName.getText();
+		    String id = txtId.getText();
+		    double cost;
+
+		    try {
+		        cost = Double.parseDouble(txtCost.getText());
+		    } catch (NumberFormatException e) {
+		        System.out.println("Invalid cost. Please enter a valid number.");
+		        return;
+		    }
+
+		    if (name.isEmpty() || id.isEmpty()) {
+		        System.out.println("All fields are required.");
+		        return;
+		    }
+
+		    try {
+		        PartsList = PartsDao.readParts();
+		    } catch (FileNotFoundException e) {
+		        System.out.println("No existing parts found. Starting fresh.");
+		        PartsList = new LinkedList<>();
+		    } catch (ClassNotFoundException e) {
+		        e.printStackTrace();
+		    }
+
+		    Parts parts = new Parts(id, name, cost);
+		    PartsList.add(parts);
+
+		    PartsDao.writeCustomer(PartsList);
+
+		    System.out.println("Part added successfully: " + parts);
+		    dispose();
 		}
 
-		private void onBtnSubmitClick() {
-			String name = txtName.getText();
-			String desc = txtDesc.getText();
-			double cost = Double.parseDouble(txtCost.getText());
-			sparePart = new Parts(name, desc, cost);
-			this.dispose();
-		}
+
+
+			
 
 }
